@@ -45,3 +45,9 @@ $RECYCLE.BIN/
 Network Trash Folder
 Temporary Items
 .apdisk
+
+
+# 忽略所有文件
+*
+# 除了这个文件
+!.gitignore
