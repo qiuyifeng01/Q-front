@@ -1,0 +1,181 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>自定义社会化分享</title>
+<meta name="keywords" content="#" />
+<meta name="description" content="#" />
+<link rel="stylesheet" type="text/css" href="css/global.css" />
+<link rel="stylesheet" type="text/css" href="css/index.css" />
+<!--<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>-->
+<script type="text/javascript" src="js/jquery.min.js"></script>
+
+<script type="text/javascript" src="js/qrcode.min.js"></script>
+<style>
+/* 文字模块5  css */
+.tlist_5 li{ /*height:70px;*/ padding:15px 0px; border-bottom:#ededed solid 1px;}
+.tlist_5 li h2 a{ display:block; font-weight:normal; font-size:18px; height:28px; line-height:28px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; _width:100%;}
+.tlist_5 li h2 a:hover{color:#f6505c;}
+.tlist_5 li p{ color:#888; height:40px; line-height:20px; margin-top:6px; overflow:hidden;}
+
+.fxline{}
+.sharebox{ position:relative;}
+.sharebox span{ display:inline-block; padding:5px; background-color:#666; color:#fff;}
+.sharebox .share-btns{ position:absolute; top:-34px; left:0px; background-color:#fff; border:1px solid #666; height:16px; padding:5px;}
+.sharebox .share-btns em{display:block; width: 0;height: 0; overflow: hidden; border-style:solid; border-width:5px 5px 0px 5px; /*border: 9px solid;*/ border-color:#404952 #fff #fff #fff ; position:absolute; left:5px; top:27px;}
+.sharebox .share-btns i{display:block; width: 0;height: 0; overflow: hidden; border-style:solid; border-width:5px 5px 0px 5px; /*border: 9px solid;*/ border-color:#fff transparent  transparent transparent; position:absolute; left:5px; top:26px;}
+.sharebox .share-btns span{ display:block; position:absolute; top:-12px; left:0px; background:url(images/icon-jt.png) no-repeat; width:19px; height:12px; overflow:hidden;}
+.shadow{height: 1px;
+    overflow: hidden;
+    border-top: 1px solid #c8c8c8;
+    border-bottom: 1px solid #f1f1f1;
+    background: #e1e1e1;}
+</style>
+<script>
+//自己找的分享接口地址api
+function tofxURL(name,itemID){
+//alert(name+','+title+','+url+',');return;
+var title = $('#item'+itemID).find('h2 a').text();
+var url = $('#item'+itemID).find('h2 a').attr('href');
+var shareico = {
+"tsina":"http://v.t.sina.com.cn/share/share.php?title={title}&url={url}",
+"tqq":"http://v.t.qq.com/share/share.php?title={title}&url={url}",
+"renren":"http://widget.renren.com/dialog/share?resourceUrl={url}&srcUrl={url}&title={title}",
+"cqq":"http://connect.qq.com/widget/shareqq/index.html?url={url}&title={title}",
+"douban":"http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url={url}&title={title}",
+
+"qzone":"http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url={url}&title={title}"
+};
+var shareiconame = {
+"tsina":"新浪微博",
+"tqq":"腾讯微博",
+"renren":"人人网",
+"cqq":"QQ好友",
+"douban":"豆瓣",
+
+"qzone":"QQ空间"
+};
+
+var $title = encodeURI(title);
+var $url = encodeURI(url);
+//alert(title+','+url+',');return;
+//alert(name);
+//alert(shareico[name]);
+$href = shareico[name].replace("{title}",$title).replace("{url}",$url);  
+//alert($href);
+//window.location.href=$href;
+w = window.screen.width, h = window.screen.height;
+window.open($href);
+//window.open( $href,'分享到'+shareico[name], "height=480,width=608,top=" + (h-480)/2 + ",left=" + (w-608)/2 + ",toolbar=no,menubar=no,resizable=yes,location=yes,status=no");//这个在ie下报错，无法打开弹窗
+
+}
+
+function tofxWeixin(itemID){
+	var url = $('#item'+itemID).find('h2 a').attr('href');
+	//二维码重置
+	$('#wxewm').html('');
+	//处理生成二维码
+	var qrcode = new QRCode(document.getElementById("wxewm"), {
+		width : 220,
+		height : 220
+	});
+	qrcode.makeCode(url);
+	openpop('#pop-weixin');
+}
+</script>
+</head>
+
+<body>
+<div style="width:800px; height:1200px; margin:0 auto">
+<ul class="tlist_5">
+	<li id="item1">
+    	<h2><a href="http://huaban.com/pins/625504886/" title="#" target="_blank">股市大跌猪肉价飙涨股市大跌猪肉价飙涨股市大跌猪肉价飙涨 专家解读A股机会</a></h2>
+        <p>对于猪价进入上涨周期，机构券商非常重视，分析师们加班加点调研养殖行业和相关公司，纷纷推出调研报告。</p>
+        <div class="fxline">
+        	<div class="sharebox">
+        	<span>分享到</span>
+            <div class="share-btns">
+            <div class="shadow"></div>
+            <span class="icon-jt jt-t"></span>
+            <em></em><i></i>
+            <a href="javascript:;" onClick="tofxURL('tsina',1);">新浪微博</a>
+            <a href="javascript:;" onClick="tofxURL('tqq',1);">腾讯微博</a>
+            <a href="javascript:;" onClick="tofxURL('cqq',1);">QQ</a>
+            <a href="javascript:;" onClick="tofxURL('qzone',1);">QQ空间</a>
+            <a href="javascript:;" onClick="tofxWeixin(1);">微信</a>
+            </div>
+            
+            <div class="shadow"></div>
+            </div>
+       </div>
+    </li>
+    <li id="item2">
+    	<h2><a href="http://www.baidu.com/" title="#" target="_blank">股市大跌猪肉价飙涨 专家解读A股机会</a></h2>
+        <p>对于猪价进入上涨周期，机构券商非常重视，分析师们加班加点调研养殖行业和相关公司，纷纷推出调研报告。</p>
+        <div class="fxline">
+        	<div class="sharebox">
+        	<span>分享到</span>
+            <div class="share-btns">
+            <div class="shadow"></div>
+            <span class="icon-jt jt-t"></span>
+            <em></em><i></i>
+            <a href="javascript:;" onClick="tofxURL('tsina',2);">新浪微博</a>
+            <a href="javascript:;" onClick="tofxURL('tqq',2);">腾讯微博</a>
+            <a href="javascript:;" onClick="tofxURL('cqq',2);">QQ</a>
+            <a href="javascript:;" onClick="tofxURL('qzone',2);">QQ空间</a>
+            <a href="javascript:;" onClick="tofxWeixin(2);">微信</a>
+            </div>
+            
+            <div class="shadow"></div>
+            </div>
+       </div>
+    </li>
+    <li>
+    	<h2><a href="#" title="#" target="_blank">股市大跌猪肉价飙涨 专家解读A股机会</a></h2>
+        <p>对于猪价进入上涨周期，机构券商非常重视，分析师们加班加点调研养殖行业和相关公司，纷纷推出调研报告。</p>
+    </li>
+</ul>
+
+<style>
+.pbox{border:1px solid #c8c8c8; padding:1px; background: #e1e1e1; position:relative;}
+.pbox .pin{ border:1px solid #f1f1f1; background-color:#fff;}
+.pbox span{ display:block; position:absolute; top:-10px; left:10px; background:url(images/icon-jt.png) no-repeat; width:19px; height:12px; overflow:hidden;}
+</style>
+<div class="pbox">
+	<span></span>
+	<div class="pin">dsss</div>
+</div>
+</div>
+
+<!-------------------------------弹出层相关--------------------------------------->
+<link rel="stylesheet" type="text/css" href="css/popup.css?v1" />
+<script type="text/javascript" src="js/popup.js"></script>
+<!--------------弹出框pop:弹框------------------->
+<div class="popobox" id="pop-tip" style="display:none;">
+<div class="pop">
+	<h2 class="pop-titline"><span class="pop-close" onclick="closepop('#pop-tip');">&nbsp;</span><span class="pop-tit">标题</span></h2>
+    <div class="pop-mainer">
+        <p>这里写弹出框代码</p>
+    </div>
+    <!--pop-mainer:end-->
+</div>
+<div class="popbg"></div>
+</div>
+<!--------------弹出框pop:弹框------------------->
+
+<!--------------弹出框pop:弹框------------------->
+<div class="popobox" id="pop-weixin" style="display:block;">
+<div class="popwx">
+	<h2 class="popwx-titline"><span class="popwx-close" onclick="closepop('#pop-weixin');">×</span><span class="popwx-tit">分享到微信朋友圈</span></h2>
+    <div class="popwx-mainer">
+        <p><a href="javascript:;" id="wxewm"></a></p>
+    </div>
+    <div class="popwx-bottom"><p>打开微信，点击底部的“发现”，使用 “扫一扫” 即可将网页分享到我的朋友圈。 <a href="#">如何使用？</a></p></div>
+    <!--pop-mainer:end-->
+</div>
+
+</div>
+<!--------------弹出框pop:弹框------------------->
+
+</body>
+</html>
