@@ -1,0 +1,152 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>一个幻灯</title>
+<meta name="keywords" content="#" />
+<meta name="description" content="#" />
+<link rel="stylesheet" type="text/css" href="../../public/css/global.css" />
+<!--<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>-->
+<script type="text/javascript" src="../../public/js/jquery/1.9.1/jquery.min.js"></script>
+<style>
+body{ padding:50px;}
+
+.picfocus{ width:660px; height:420px; overflow:hidden; position:relative;}
+.picfocus .lunbo li{ float:left; width:660px;}
+.picfocus .lunbo li a{ display:block;}
+.picfocus .lunbo li a img{ width:660px; height:420px;}
+.picfocus .titfocus{ position:absolute; left:50px; bottom:50px; height:64px; width:560px; color:#fff;}
+.picfocus .titfocus p{ position:absolute; left:0px; top:0px;  height:64px; line-height:64px; width:560px;}
+.picfocus .titfocus p.bg{ z-index:10; background-color:#000; opacity:0.5; filter:alpha(opacity=50);}
+.picfocus .titfocus p.tit{ z-index:20; padding-left:20px; font-size:24px; width:400px;white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
+.picfocus .titfocus .dian{ position:absolute; z-index:20; right:20px; top:26px;}
+.picfocus .titfocus .dian a{ display:block; float:left; width:12px; height:12px; overflow:hidden; border-radius:12px; text-indent:-9999px; background-color:#999; margin-right:5px;}
+.picfocus .titfocus .dian a.on{ background-color:#f1f1f1;}
+
+.picfocus .picbtn{ position:absolute;  width:60px; height:60px;}
+.picfocus .picbtn a{display:block; background-color:#333; width:60px; height:60px; opacity:0.5; filter:alpha(opacity=50);}
+.picfocus .picbtn a:hover{ opacity:0.85; filter:alpha(opacity=85);}
+.picfocus .prebtn{ left:0px; top:140px;}
+.picfocus .nextbtn{ right:0px; top:140px;}
+</style>
+</head>
+
+<body>
+<div class="picfocus" id="picfocus1">
+<ul class="lunbo clearfix" style="width:400%; margin-left:0%;">
+<li><a href="#"><img src="pics/1.jpg" alt="1行走光阴 陶享时光"></a></li>
+<li><a href="#"><img src="pics/2.jpg" alt="2行走光阴陶享时光陶享时光陶享时光行走光阴陶享时光陶享时光陶享时光"></a></li>
+<li><a href="#"><img src="pics/1.jpg" alt="3陶享时光陶享时光"></a></li>
+<li><a href="#"><img src="pics/2.jpg" alt="4美丽的传说睡眠ask暗褐色"></a></li>
+</ul>
+<div class="titfocus">
+	<div class="dian">
+    <a href="javascript:;" class="on">1</a>
+    <a href="javascript:;">2</a>
+    <a href="javascript:;">3</a>
+    <a href="javascript:;">4</a>
+    </div>
+	<p class="tit">行走光阴 陶享时光</p>
+	<p class="bg"></p>
+</div>
+<div class="picbtn prebtn"><a href="javascript:;"></a></div>
+<div class="picbtn nextbtn"><a href="javascript:;"></a></div>
+</div>
+
+<div style="height:50px; line-height:50px; padding:10px 0px;">doFocus('#picfocus1');可以多个轮播图</div>
+
+<div class="picfocus" id="picfocus2">
+<ul class="lunbo clearfix" style="width:600%; margin-left:0%;">
+<li><a href="#"><img src="pics/1.jpg" alt="1行走光阴 陶享时光"></a></li>
+<li><a href="#"><img src="pics/2.jpg" alt="2行走光阴陶享时光陶享时光陶享时光行走光阴陶享时光陶享时光陶享时光"></a></li>
+<li><a href="#"><img src="pics/1.jpg" alt="3陶享时光陶享时光"></a></li>
+<li><a href="#"><img src="pics/2.jpg" alt="4美丽的传说睡眠ask暗褐色"></a></li>
+<li><a href="#"><img src="pics/1.jpg" alt="5陶享时光陶享时光"></a></li>
+<li><a href="#"><img src="pics/2.jpg" alt="6美丽的传说睡眠ask暗褐色"></a></li>
+</ul>
+<div class="titfocus">
+	<div class="dian">
+    <a href="javascript:;" class="on">1</a>
+    <a href="javascript:;">2</a>
+    <a href="javascript:;">3</a>
+    <a href="javascript:;">4</a>
+    <a href="javascript:;">5</a>
+    <a href="javascript:;">6</a>
+    </div>
+	<p class="tit">行走光阴 陶享时光</p>
+	<p class="bg"></p>
+</div>
+<div class="picbtn prebtn"><a href="javascript:;"></a></div>
+<div class="picbtn nextbtn"><a href="javascript:;"></a></div>
+</div>
+<script>
+$(function(){
+	doFocus('#picfocus1');
+	doFocus('#picfocus2');
+});
+
+function doFocus(dom){
+	var $lunbo = $(dom).find('.lunbo');
+	var $prebtn = $(dom).find('.prebtn');
+	var $nextbtn = $(dom).find('.nextbtn');
+	var $dian = $(dom).find('.dian');
+	var $tit = $(dom).find('.tit');
+	var num = $dian.find('a').length;
+	//处理标题
+	var dotit = function(i){
+		var title = $lunbo.find('li').eq(i).find('img').attr('alt');
+		$tit.html(title);
+	}
+	//自动运行
+	var auto = function(){
+		$nextbtn.trigger('click');
+		console.log(1);
+	};
+	var t = setInterval(auto,4000);
+	$(dom).mouseenter(function(){
+		clearInterval(t);
+	}).mouseleave(function(){
+		t = setInterval(auto,4000);
+	});
+	
+	$prebtn.on('click',function(){
+		var i = $dian.find('.on').index();
+		if(i == 0){
+			i = num;
+		}
+		var ml = -(i-1)*100;
+		$lunbo.animate({"margin-left":ml+'%'},function(){
+			$dian.find('a').removeClass('on').eq(i-1).addClass('on');	
+		});
+		//alert(i);
+		dotit(i-1);
+	});
+	
+	$nextbtn.on('click',function(){
+		var i = $dian.find('.on').index();
+		if(i >= num-1){
+			i = -1;
+		}
+		var ml = -(i+1)*100;
+		$lunbo.animate({"margin-left":ml+'%'},function(){
+			$dian.find('a').removeClass('on').eq(i+1).addClass('on');	
+		});
+		//alert(i);
+		dotit(i+1);
+	});
+	
+	$dian.find('a').on('click',function(){
+		var i = $(this).index();
+		
+		var ml = -(i)*100;
+		$lunbo.animate({"margin-left":ml+'%'},function(){
+			$dian.find('a').removeClass('on').eq(i).addClass('on');	
+		});
+		//alert(i);
+		dotit(i);
+	});
+	
+}
+</script>
+</body>
+</html>
