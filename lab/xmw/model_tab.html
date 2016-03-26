@@ -1,0 +1,396 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>表格样式和弹窗</title>
+<link rel="stylesheet" type="text/css" href="css/global.css" />
+<link rel="stylesheet" type="text/css" href="css/table.css" />
+<script type="text/javascript" src="js/jquery.min.js"></script>
+
+<!--<script type="text/javascript" src="http://www.jinpai.com//APP/Home/View/Public/js/bonus.js"></script>-->
+<script type="text/javascript" src="js/bonus.js"></script>
+<script>
+$(function(){
+	$('body').bonus({bonusID:'CR1pKeIg'});
+});
+</script>
+
+
+<style>
+h3.h{ text-align:center; font-weight:normal; color:#333; padding:10px 0px; height:20px; line-height:20px;}
+h3.h span{ color:#999;}
+h3.h a{ color:#666; padding:0px 5px; height:20px; line-height:20px; border:1px solid #ddd; font-size:12px;}
+h3.h a:hover{color:#fff; background-color:#049BEE; border:1px solid #049BEE;}
+</style>
+</head>
+
+<body>
+<br>
+<style>
+.c-75b227{ color:#75b227;}
+.c-ff6f02{ color:#ff6f02;}
+
+.tabone .table-bg thead th{ background:url("images/com_table_th_bg.jpg") repeat-x; border-bottom:0px;}
+.tabone .table{ font-size:14px; color:#333;}
+.tabone .table thead th span{display: inline-block; padding-right:17px; background:url("images/t10.png") no-repeat; cursor:pointer; background-position: right -54px;}
+.tabone .table thead th span.f-img-down{background-position:right -112px;}
+.tabone .table thead th span.f-img-up {background-position:right 4px;}
+.tabone .table a{color: #0086cf; text-decoration:none;}
+.tabone .table a:hover{color: #0086cf; text-decoration:underline;}
+.tabone .table a.u-abtn8{ color:#656567;}
+.tabone .table a.u-abtn8:hover{color: #fff; text-decoration:none;}
+</style>
+<div class="tabone" style="width:1000px; margin:0 auto;">
+<table class="table table-border table-bg table-hover">
+  <caption>th用背景图片的</caption>
+  <thead>
+    <tr>
+    <th><span>域名</span></th>
+    <th>简介</th>
+    <th>注册商</th>
+    <th><span class="f-img-down">一口价</span></th>
+    <th><span class="f-img-up">剩余时间</span></th>
+    <th>操作</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <td><a href="#">mail.com</a></a></td>
+    <td>洁网、借网、节网、杰网、姐网、街网、解网</td>
+    <td>易名中国</td>
+    <td class="c-75b227">￥10,000</td>
+    <td>2小时24分50秒</td>
+    <td>
+    <a class="u-abtn8" href="#">详情</a>
+    <a class="u-abtn8" href="#">删除</a>
+    </td>
+    </tr>
+    <tr>
+    <td><a href="#">mail.com等3个域名</a></td>
+    <td>洁网、借网、节网、杰网、姐网、街网、解网</td>
+    <td>易名中国</td>
+    <td class="c-75b227">￥10,000</td>
+    <td>2小时24分50秒</td>
+    <td>
+    <a class="u-abtn8" href="#">详情</a>
+    <a class="u-abtn8" href="#">删除</a>
+    </td>
+    </tr>
+    <tr>
+    <td><a href="#">mail.com</a></td>
+    <td class="c-ff6f02">洁网、借网、节网、杰网、姐网、街网、解网</td>
+    <td>易名中国</td>
+    <td class="c-75b227">￥10,000</td>
+    <td>2小时24分50秒</td>
+    <td>
+    <a class="u-abtn8" href="#">详情</a>
+    <a class="u-abtn8" href="#">删除</a>
+    </td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<br>
+
+<script>
+$(function(){
+	$('#tab2_jiazi').click(function(){
+		var obj = $('.tabtwo tbody tr').eq(0).find('td').eq(1);
+		obj.html(obj.html()+'多加一些测试的文字，不好看了把');
+	});
+	$('#tab2_back').click(function(){
+		var obj = $('.tabtwo tbody tr').eq(0).find('td').eq(1);
+		var oldtext = $('.tabtwo tbody tr').eq(1).find('td').eq(1).html();
+		obj.html(oldtext);
+	});
+});
+</script>
+<h3 class="h">普通的td未限定宽度自行调控的<span>(这个文字比较多适应的并不好)</span> <a href="javascript:;" id="tab2_jiazi">加字试试</a> <a href="javascript:;" id="tab2_back">还原</a></h3>
+<style>
+.c-75b227{ color:#75b227;}
+.c-ff6f02{ color:#ff6f02;}
+
+.tabtwo{ background-color:#fcfcfc;}
+.tabtwo .table-bg thead th{ background-color:#fcfcfc;}
+.tabtwo .table-hover tbody tr:hover td,.tabtwo .table-hover tbody tr:hover th{background-color: #f0f1f1;}
+.tabtwo .table{ font-size:14px; color:#646567;}
+.tabtwo .table thead th span{display: inline-block; padding-right:17px; background:url("images/t10.png") no-repeat; cursor:pointer; background-position: right -54px;}
+.tabtwo .table thead th span.f-img-down{background-position:right -112px;}
+.tabtwo .table thead th span.f-img-up {background-position:right 4px;}
+.tabtwo .table a{color: #0086cf; text-decoration:none;}
+.tabtwo .table a:hover{color: #0086cf; text-decoration:underline;}
+.tabtwo .table a.u-abtn8{ color:#656567;}
+.tabtwo .table a.u-abtn8:hover{color: #fff; text-decoration:none;}
+</style>
+<div class="tabtwo" style="width:1000px; margin:0 auto;">
+<table class="table table-border table-bg table-hover">
+  <thead>
+    <tr>
+    <th><span>域名</span></th>
+    <th>简介</th>
+    <th>注册商</th>
+    <th><span class="f-img-down">一口价</span></th>
+    <th><span class="f-img-up">剩余时间</span></th>
+    <th>操作</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <td><a href="#">mail.com</a></a></td>
+    <td>洁网、借网、节网、杰网、姐网、街网、解网</td>
+    <td>易名中国</td>
+    <td class="c-75b227">￥10,000</td>
+    <td>2小时24分50秒</td>
+    <td>
+    <a class="u-abtn8" href="#">详情</a>
+    <a class="u-abtn8" href="#">删除</a>
+    </td>
+    </tr>
+    <tr>
+    <td><a href="#">mail.com等3个域名</a></td>
+    <td>洁网、借网、节网、杰网、姐网、街网、解网</td>
+    <td>易名中国</td>
+    <td class="c-75b227">￥10,000</td>
+    <td>2小时24分50秒</td>
+    <td>
+    <a class="u-abtn8" href="#">详情</a>
+    <a class="u-abtn8" href="#">删除</a>
+    </td>
+    </tr>
+    <tr>
+    <td><a href="#">mail.com</a></td>
+    <td class="c-ff6f02">洁网、借网、节网、杰网、姐网、街网、解网</td>
+    <td>易名中国</td>
+    <td class="c-75b227">￥10,000</td>
+    <td>2小时24分50秒</td>
+    <td>
+    <a class="u-abtn8" href="#">详情</a>
+    <a class="u-abtn8" href="#">删除</a>
+    </td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<br>
+
+<script>
+$(function(){
+	$('#tab3_jiazi').click(function(){
+		var obj = $('.tabthree tbody tr').eq(0).find('td').eq(3);
+		obj.html(obj.html()+'这个多加一些文字，就比较好看');
+	});
+	$('#tab3_back').click(function(){
+		var obj = $('.tabthree tbody tr').eq(0).find('td').eq(3);
+		var oldtext = $('.tabthree tbody tr').eq(1).find('td').eq(3).html();
+		obj.html(oldtext);
+	});
+});
+</script>
+<h3 class="h">td限定宽度并且加了隔层避免字多了挤在一起的处理的<span>(这个文字也适应的比较好)</span> <a href="javascript:;" id="tab3_jiazi">加字试试</a> <a href="javascript:;" id="tab3_back">还原</a></h3>
+<style>
+.c-75b227{ color:#75b227;}
+.c-ff6f02{ color:#ff6f02;}
+
+.tabthree{ background-color:#fcfcfc;}
+.tabthree .table-bg thead th{ background-color:#fcfcfc;}
+.tabthree .table th, .tabthree .table td{ padding:8px 0px; word-break:break-all;}
+.tabthree .table-hover tbody tr:hover td,.tabthree .table-hover tbody tr:hover th{background-color: #f0f1f1;}
+.tabthree .table{ font-size:14px; color:#646567;}
+.tabthree .table thead th span{display: inline-block; padding-right:17px; background:url("images/t10.png") no-repeat; cursor:pointer; background-position: right -54px;}
+.tabthree .table thead th span.f-img-down{background-position:right -112px;}
+.tabthree .table thead th span.f-img-up {background-position:right 4px;}
+.tabthree .table a{color: #0086cf; text-decoration:none;}
+.tabthree .table a:hover{color: #0086cf; text-decoration:underline;}
+.tabthree .table a.u-abtn8{ color:#656567;}
+.tabthree .table a.u-abtn8:hover{color: #fff; text-decoration:none;}
+</style>
+<div class="tabthree" style="width:1000px; margin:0 auto;">
+<table class="table table-border table-bg table-hover">
+  <thead>
+    <tr>
+    <th width="16px"></th>
+    <th width="174px"><span>域名</span></th>
+    <th width="8px"></th>
+    <th width="300px">简介</th>
+    <th width="16px"></th>
+    <th width="105px">注册商</th>
+    <th width="105px" class="text-c"><span class="f-img-down">一口价</span></th>
+    <th width="130px" class="text-c"><span class="f-img-up">剩余时间</span></th>
+    <th width="130px" class="text-c">操作</th>
+    <th width="16px"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <td></td>
+    <td><a href="#">mail.com</a></a></td>
+    <td></td>
+    <td>洁网、借网、节网、杰网、姐网、街网、解网</td>
+    <td></td>
+    <td>易名中国易名中国</td>
+    <td class="text-c c-75b227">￥10,000</td>
+    <td class="text-c">24小时24分50秒</td>
+    <td class="text-c">
+    <a class="u-abtn8" href="#">详情</a>
+    <a class="u-abtn8" href="#">删除</a>
+    </td>
+    <td></td>
+    </tr>
+    <tr>
+    <td></td>
+    <td><a href="#">mail.com等3个域名</a></td>
+    <td></td>
+    <td>洁网、借网、节网、杰网、姐网、街网、解网</td>
+    <td></td>
+    <td>易名中国</td>
+    <td class="text-c c-75b227">￥10,000</td>
+    <td class="text-c">2小时24分50秒</td>
+    <td class="text-c">
+    <a class="u-abtn8" href="#">详情</a>
+    <a class="u-abtn8" href="#">删除</a>
+    </td>
+    <td></td>
+    </tr>
+    <tr>
+    <td></td>
+    <td><a href="#">mail44444444444555544444.com</a></td>
+    <td></td>
+    <td class="c-ff6f02">洁网、借网、节网、杰网、姐网、街网、解网</td>
+    <td></td>
+    <td>易名中国</td>
+    <td class="text-c c-75b227">￥10,000</td>
+    <td class="text-c">2小时24分50秒</td>
+    <td class="text-c">
+    <a class="u-abtn8" href="#">详情</a>
+    <a class="u-abtn8" href="#">删除</a>
+    </td>
+    <td></td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<br>
+<br>
+<br>
+<script>
+$(function(){
+	$('.tabfour .checkAll').click(function(){
+		if($(this).prop("checked")){
+			$('.tabfour .box').prop("checked", true);
+		}else{
+			$('.tabfour .box').prop("checked", false);
+		}
+	});
+});
+</script>
+<style>
+.c-75b227{ color:#75b227;}
+.c-ff6f02{ color:#ff6f02;}
+
+.tabfour{ background-color:#fff;}
+.tabfour .checkAll,.tabfour .box{ vertical-align:top; margin-top:3px;}
+.tabfour .table-border{  border-top:1px solid #F0F1F1;}
+.tabfour .table-bg thead th{ background-color:#fff;}
+.tabfour .table th, .tabfour .table td{ padding:8px 0px; border-bottom:1px solid #F0F1F1; word-break:break-all;}
+.tabfour .table-hover tbody tr:hover td,.tabfour .table-hover tbody tr:hover th{background-color: #FDFDFD;}
+.tabfour .table{ font-size:14px; color:#646567;}
+.tabfour .table thead th span{display: inline-block; padding-right:17px; background:url("images/t10.png") no-repeat; cursor:pointer; background-position: right -54px;}
+.tabfour .table thead th span.f-img-down{background-position:right -112px;}
+.tabfour .table thead th span.f-img-up {background-position:right 4px;}
+.tabfour .table a{color: #0086cf; text-decoration:none;}
+.tabfour .table a:hover{color: #0086cf; text-decoration:underline;}
+.tabfour .table a.u-abtn8{ color:#656567;}
+.tabfour .table a.u-abtn8:hover{color: #fff; text-decoration:none;}
+</style>
+<div class="tabfour" style="width:1000px; margin:0 auto;">
+<table class="table table-border table-bg table-hover">
+  <thead>
+    <tr>
+    <th width="16px"></th>
+    <th width="30px"><input type="checkbox" class="checkAll"></th>
+    <th width="174px"><span>域名</span></th>
+    <th width="8px"></th>
+    <th width="280px">简介</th>
+    <th width="16px"></th>
+    <th width="105px">注册商</th>
+    <th width="105px" class="text-c"><span class="f-img-down">一口价</span></th>
+    <th width="130px" class="text-c"><span class="f-img-up">剩余时间</span></th>
+    <th width="130px" class="text-c">操作</th>
+    <th width="16px"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <td></td>
+    <td><input type="checkbox" class="box" name="ids[]" value="1"></td>
+    <td><a href="#">mail.com</a></a></td>
+    <td></td>
+    <td>洁网、借网、节网、杰网、洁网、借网、节网、杰网、姐网、街网、解网</td>
+    <td></td>
+    <td>易名中国易名中国</td>
+    <td class="text-c c-75b227">￥10,000</td>
+    <td class="text-c">24小时24分50秒</td>
+    <td class="text-c">
+    <a class="u-abtn8" href="#">详情</a>
+    <a class="u-abtn8" href="#">删除</a>
+    </td>
+    <td></td>
+    </tr>
+    <tr>
+    <td></td>
+    <td><input type="checkbox" class="box" name="ids[]" value="1"></td>
+    <td><a href="#">mail.com等3个域名</a></td>
+    <td></td>
+    <td>洁网、借网、节网、杰网、姐网、街网、解网</td>
+    <td></td>
+    <td>易名中国</td>
+    <td class="text-c c-75b227">￥10,000</td>
+    <td class="text-c">2小时24分50秒</td>
+    <td class="text-c">
+    <a class="u-abtn8" href="#">详情</a>
+    <a class="u-abtn8" href="#">删除</a>
+    </td>
+    <td></td>
+    </tr>
+    <tr>
+    <td></td>
+    <td><input type="checkbox" class="box" name="ids[]" value="1"></td>
+    <td><a href="#">mail44444444444555544444.com</a></td>
+    <td></td>
+    <td class="c-ff6f02">洁网、借网、节网、杰网、姐网、街网、解网</td>
+    <td></td>
+    <td>易名中国</td>
+    <td class="text-c c-75b227">￥10,000</td>
+    <td class="text-c">2小时24分50秒</td>
+    <td class="text-c">
+    <a class="u-abtn8" href="#">详情</a>
+    <a class="u-abtn8" href="#">删除</a>
+    </td>
+    <td></td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<style>
+/*分页*/
+.pagebox{width:1000px; margin:0 auto; padding:50px 0px; font-size:14px; color:#333;}
+
+.g-padding .u-fl{ float:left;}
+.g-padding .u-fr{ float:right;}
+.g-padding .u_fw{ font-weight:bold;}
+.g-padding{width:702px;padding-top:10px;line-height:30px;}
+.g-padding1,.g-padding2{width:678px;margin:0px auto;padding:15px 0;}.g-padding1{width:678px;}.g-padding2{width:704px;}
+.g-padding a{display:inline-block;vertical-align:top;min-width:10px;padding:0 10px;height:30px;border-radius:30px;-opera-border-radius:30px;-moz-border-radius:30px;-webkit-border-radius:30px;-khtml-border-radius:30px;text-align:center;border:1px solid #cfcfcf;margin-left:3px;}
+.g-padding a:hover{color:#fff;background-color:#2aa3ce;border:1px solid #2aa3ce;}
+.g-padding a.t{background-color:#2aa3ce;border:1px solid #2aa3ce;color:#fff;}
+.g-padding a.pg_enabled,.g-padding a.pa_disabled{background-image:url(images/page.png);background-repeat:no-repeat;}
+.g-padding a.pg_enabled{background-position:-49px 0px;}.g-padding a.pg_enabled:hover{background-position:-49px -74px;}
+.g-padding a.pa_disabled{background-position:-46px -148px;}.g-padding a.pa_disabled:hover{background-position:-43px -222px;}
+</style>
+<div class="pagebox" style="">
+<div id="paging" class="g-padding clearfix"></div>
+</div>
+<script type="text/javascript" src="js/nextPage.js"></script>
+</body>
+</html>

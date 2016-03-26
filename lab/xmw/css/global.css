@@ -1,0 +1,19 @@
+@charset "utf-8";
+/* global CSS */
+/**{transition:color 300ms,background-color 300ms;-moz-transition:color 300ms,background-color 300ms;-webkit-transition:color 300ms,background-color 300ms;-o-transition:color 300ms,background-color 300ms}*/
+*body{background-image:url(about:blank);background-attachment:fixed;/*用于ie6的fixed必要，防抖动*/}
+body{font-size:12px; font-family:"Microsoft Yahei", simsun;}
+body,div,p,ul,ol,li,form,input,h1,h2,h3,h4,h5,h6,dl,dt,dd,table,tr,td{ margin:0px; padding:0px;}
+ul,ol{ list-style:none;}
+img{ border:0px; vertical-align:bottom;}
+a{ color:#666; text-decoration:none; outline:none;}
+a:hover{ color:#f6505c; text-decoration:none;}
+a:active {star:expression(this.onFocus=this.blur());}/*处理ie下链接虚线问题*/
+em{ font-style:normal;}
+a:hover img.opacity{filter:alpha(opacity=85); opacity:0.85;}
+
+.clearfix:after{content:".";display:block;height:0;clear:both;visibility:hidden;}
+.clearfix{*zoom:1;}
+.clear{ clear:both;}
+.clear10{clear:both;font-size:1px;width:100%;height:10px;visibility:hidden;margin-top:0px!important;*margin-top:-1px;line-height:0;}
+.clear20{clear:both;font-size:1px;width:100%;height:20px;visibility:hidden;margin-top:0px!important;*margin-top:-1px;line-height:0;}
