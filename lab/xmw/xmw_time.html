@@ -1,0 +1,379 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>倒计时测试按新米网的走</title>
+<link rel="stylesheet" type="text/css" href="css/global.css" />
+<link rel="stylesheet" type="text/css" href="css/table.css" />
+<link rel="stylesheet" type="text/css" href="css/xmw_tab.css" />
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/common.js"></script>
+<script src="plus/layer/layer.js"></script>
+<style>
+h3.h{ text-align:center; font-weight:normal; color:#333; padding:10px 0px; height:20px; line-height:20px;}
+h3.h span{ color:#999;}
+h3.h a{ color:#666; padding:0px 5px; height:20px; line-height:20px; border:1px solid #ddd; font-size:12px;}
+h3.h a:hover{color:#fff; background-color:#049BEE; border:1px solid #049BEE;}
+.content{ width:1200px; margin:0 auto;}
+.log{ padding:40px 20px; background-color:#fff; text-align:center;}
+.log a{ border:1px solid #ddd; color:#666; background-color:#f0f0f0; display:inline-block; padding:5px 10px;}
+.log a:hover{ color:#fff; background-color:#ff6600; border:1px solid #ff6600;}
+</style>
+<script>
+/*-----------------------倒计时相关js-------------------------------*/
+//倒计时
+function countDown(end){
+	if(typeof end == 'number'){
+		var endtime = new Date(parseInt(end) * 1000);
+	}else{
+		var endtime = new Date(end);
+	}
+	var nowtime = new Date();
+	var leftsecond = parseInt((endtime.getTime() - nowtime.getTime()) / 1000);  
+	d = parseInt(leftsecond / 3600 / 24);  
+	h = parseInt((leftsecond / 3600) % 24);  
+	m = parseInt((leftsecond / 60) % 60);  
+	s = parseInt(leftsecond % 60);
+	var rst = new Array();
+	rst['day'] = d;
+	rst['hour'] = h;
+	rst['minute'] = m;
+	rst['second'] = s;
+	var txt = '';
+	if(rst['day'] > 0 ) txt += rst['day']+'天';
+	if(rst['hour'] > 0 ) txt += rst['hour']+'时';
+	if(rst['minute'] > 0 ) txt += rst['minute']+'分';
+	if(rst['second'] > 0 ) txt += rst['second']+'秒';
+	
+	if(leftsecond<0) txt='结束';
+	//console.log(rst);
+	return txt;
+}
+function doCountDown(){
+	$('.outframe table td.docountdown').each(function(){
+		var end = $(this).data('time');
+		var rtime = countDown(end);
+		$(this).html(rtime);
+	});
+}
+$(function(){
+	sx = setInterval(doCountDown, 1000);
+});
+/*-----------------------倒计时相关js-------------------------------*/
+
+/*-----------------------时钟相关js-------------------------------*/
+//时钟
+function showLocale(objD)
+{
+	var str,colorhead,colorfoot;
+	var yy = objD.getYear();
+	if(yy<1900) yy = yy+1900;
+	var MM = objD.getMonth()+1;
+	if(MM<10) MM = '0' + MM;
+	var dd = objD.getDate();
+	if(dd<10) dd = '0' + dd;
+	var hh = objD.getHours();
+	if(hh<10) hh = '0' + hh;
+	var mm = objD.getMinutes();
+	if(mm<10) mm = '0' + mm;
+	var ss = objD.getSeconds();
+	if(ss<10) ss = '0' + ss;
+	var ww = objD.getDay();
+	if  ( ww==0 )  colorhead="<font color=\"#FF0000\">";
+	if  ( ww > 0 && ww < 6 )  colorhead="<font color=\"#373737\">";
+	if  ( ww==6 )  colorhead="<font color=\"#008000\">";
+	if  (ww==0)  ww="星期日";
+	if  (ww==1)  ww="星期一";
+	if  (ww==2)  ww="星期二";
+	if  (ww==3)  ww="星期三";
+	if  (ww==4)  ww="星期四";
+	if  (ww==5)  ww="星期五";
+	if  (ww==6)  ww="星期六";
+	colorfoot="</font>"
+	str = /*colorhead*/ + yy + "-" + MM + "-" + dd + " " + hh + ":" + mm + ":" + ss + "  " + ww /*+ colorfoot*/;
+	return(str);
+}
+function tick()
+{
+	var today;
+	today = new Date();
+	var tt = new Date(parseInt(1459149210) * 1000);
+	console.log(today);
+	console.log(tt);
+	document.getElementById("clock").innerHTML = showLocale(today);
+	window.setTimeout("tick()", 1000);
+}
+$(function(){
+	tick();
+});
+/*-----------------------时钟相关js-------------------------------*/
+
+</script>
+</head>
+
+<body>
+<div style=" font-size:42px; text-align:center;"><div id="clock"></div></div>
+
+<h3 class="h">新米网表格分页样式</h3>
+<!---------------------新米table---------------------------->
+<div class="outframe">
+<table class="table table-border table-bg table-hover">
+  <thead>
+    <tr>
+    <th width="2%"></th>
+    <th width="17%"><span class="ym">域名</span></th>
+    <th width="2%"></th>
+    <th width="28%">简介</th>
+    <th width="1%"></th>
+    <th width="12%" class="text-c">注册商</th>
+    <th width="12%" class="text-c"><span class="f-img-down">一口价</span></th>
+    <th width="13%" class="text-c"><span class="f-img-up">剩余时间</span></th>
+    <th width="10%" class="text-c">操作</th>
+    <th width="1%"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr> 
+    <td></td>
+    <td>
+    <div class="ymtit"><a href="#" class="link">mail.com</a></a></div>
+    </td>
+    <td></td>
+    <td>低价只限今天，明天涨价!!</td>
+    <td></td>
+    <td class="text-c">新民网</td>
+    <td class="text-c c-0074b1">￥10,000</td>
+    <td class="text-c c-ff3232 docountdown" data-time="2016-03-28 18:14:30">24分50秒</td>
+    <td class="text-c">
+    <a class="x-abtn1" href="#">立即购买</a>
+    </td>
+    <td></td>
+    </tr>
+    
+    <tr> 
+    <td></td>
+    <td>
+    <div class="ymtit"><a href="#" class="link">mail.com</a></a></div>
+    </td>
+    <td></td>
+    <td>低价只限今天，明天涨价!!</td>
+    <td></td>
+    <td class="text-c">新民网</td>
+    <td class="text-c c-0074b1">￥10,000</td>
+    <td class="text-c c-ff3232 docountdown" data-time="1459167510">24分50秒</td>
+    <td class="text-c">
+    <a class="x-abtn1" href="#">立即购买</a>
+    </td>
+    <td></td>
+    </tr>
+    <tr>
+    <td></td>
+    <td>
+    <div class="duoym">
+    <div class="yms">
+    <a class="zip"></a>
+    <div class="zipyms1">
+    	<i></i>
+        <div class="zipyms2">
+            <div class="slimscroll">
+            <ul>
+            <li><a href="#" title="#">mail001.com</a></li>
+            <li><a href="#" title="#">mail002.com</a></li>
+            <li><a href="#" title="#">mail0547mail0547.com</a></li>
+            </ul>
+            </div>
+        </div>
+    </div>
+    </div>
+    <div class="ymtit"><a href="#" class="link">mail.com等3个域名</a></div>
+    </div>
+    </td>
+    <td></td>
+    <td>企业已在阿里云万网备案【石家庄多卡士机械设备有限公司】【冀ICP备14008672号-2】石家庄多卡士机械设备有限公司</td>
+    <td></td>
+    <td class="text-c">易名中国</td>
+    <td class="text-c c-0074b1">￥100,000,000</td>
+    <td class="text-c c-ff3232 docountdown" data-time="1459187510">4小时24分50秒</td>
+    <td class="text-c">
+    <a class="x-abtn1" href="#">立即购买</a>
+    </td>
+    <td></td>
+    </tr>
+    <tr>
+    <td></td>
+    <td>
+    <div class="duoym">
+    <div class="yms">
+    <a class="zip"></a>
+    <div class="zipyms1">
+    	<i></i>
+        <div class="zipyms2">
+            <div class="slimscroll">
+            <ul>
+            <li><a href="#" title="#">mail001.com</a></li>
+            <li><a href="#" title="#">mail002.com</a></li>
+            <li><a href="#" title="#">mail0547mail0547.com</a></li>
+            <li><a href="#" title="#">mail0547.com</a></li>
+            <li><a href="#" title="#">mail004.com</a></li>
+            <li><a href="#" title="#">mail005.com</a></li>
+            <li><a href="#" title="#">mail6.com</a></li>
+            <li><a href="#" title="#">mail07.com</a></li>
+            <li><a href="#" title="#">mail008.com</a></li>
+            </ul>
+            </div>
+        </div>
+    </div>
+    </div>
+    <div class="ymtit"><a href="#" class="link">mail4444444444444444555544444.com等12个域名</a></div>
+    </div>
+    <td></td>
+    <td>股票代码，6数字精品，2020爱你爱你，ABABCD</td>
+    <td></td>
+    <td class="text-c">GoDaddy</td>
+    <td class="text-c c-0074b1">￥10,000</td>
+    <td class="text-c c-ff3232 docountdown" data-time="1459167510">24小时24分50秒</td>
+    <td class="text-c">
+    <a class="x-abtn1" href="#">立即购买</a>
+    </td>
+    <td></td>
+    </tr>
+    <tr> 
+    <td></td>
+    <td><div class="ymtit"><a href="#" class="link">mail.com</a></a></div></td>
+    <td></td>
+    <td>低价只限今天，明天涨价!!</td>
+    <td></td>
+    <td class="text-c">新民网</td>
+    <td class="text-c c-0074b1">￥10,000</td>
+    <td class="text-c c-ff3232 docountdown" data-time="1459253910">24分50秒</td>
+    <td class="text-c">
+    <a class="x-abtn1" href="#">立即购买</a>
+    </td>
+    <td></td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="xmpagebox" style="">
+	<div id="xmpaging" class="xm-padding clearfix"></div>
+</div>
+
+</div>
+<!---------------------/新米table---------------------------->
+
+
+
+<script src="plus/slimscroll/jquery.slimscroll.js"></script>
+<script>
+$(function(){
+	//打包域名经过效果
+	$(document).on('mouseenter','.yms',function(){
+		$(this).find('.zipyms1').css({'display':'block','z-index':'10'});
+		var boxh = $(this).find('.zipyms2').height();
+		var conh = $(this).find('ul').height();
+		if(conh<boxh){$(this).find('.zipyms2').height(conh);};
+		$(".slimscroll").slimScroll({
+			height:'180px',
+			opacity: 0.3
+		});
+	}).on('mouseleave','.yms',function(){
+		$(this).find('.zipyms1').css({'display':'none','z-index':'1'});
+	});
+	
+	//异步分页
+	$(document).on('click','#xmpaging a',function () {
+		var page = $(this).attr("k")?$(this).attr("k"):1;
+		getData_xmw(page);
+		$(document.body).scrollTop($(".outframe").position().top - 45);
+	});
+});
+
+function getData_xmw(idx) {
+	console.log('这里去写异步加载第'+idx+'页数据');	
+	//模拟数据
+	var html = "<tr>\n";
+		html += "	<td></td>\n";
+		html += "	<td><div class=\"ymtit\"><a href=\"#\" class=\"link\">mail"+idx+".com</a></a></div></td>\n";
+		html += "	<td></td>\n";
+		html += "	<td>第"+idx+"页数据低价只限今天，明天涨价!!</td>\n";
+		html += "	<td></td>\n";
+		html += "	<td class=\"text-c\">新民网</td>\n";
+		html += "	<td class=\"text-c c-0074b1\">￥10,000</td>\n";
+		html += "	<td class=\"text-c c-ff3232 docountdown\" data-time=\"2016-03-31 21:50:20\">24分50秒</td>\n";
+		html += "	<td class=\"text-c\">\n";
+		html += "	<a class=\"x-abtn1\" href=\"#\">立即购买</a>\n";
+		html += "	</td>\n";
+		html += "	<td></td>\n";
+		html += "</tr>\n";
+		
+		html += "<tr>\n";
+		html += "	<td></td>\n";
+		html += "	<td>\n";
+		html += "	<div class=\"duoym\">\n";
+		html += "	<div class=\"yms\">\n";
+		html += "	<a class=\"zip\"></a>\n";
+		html += "	<div class=\"zipyms1\">\n";
+		html += "		<i></i>\n";
+		html += "		<div class=\"zipyms2\">\n";
+		html += "			<div class=\"slimscroll\">\n";
+		html += "			<ul>\n";
+		html += "			<li><a href=\"#\" title=\"#\">mail001.com</a></li>\n";
+		html += "			<li><a href=\"#\" title=\"#\">mail002.com</a></li>\n";
+		html += "			<li><a href=\"#\" title=\"#\">mail0547mail0547.com</a></li>\n";
+		html += "			<li><a href=\"#\" title=\"#\">mail0547.com</a></li>\n";
+		html += "			<li><a href=\"#\" title=\"#\">mail004.com</a></li>\n";
+		html += "			<li><a href=\"#\" title=\"#\">mail005.com</a></li>\n";
+		html += "			<li><a href=\"#\" title=\"#\">mail6.com</a></li>\n";
+		html += "			<li><a href=\"#\" title=\"#\">mail07.com</a></li>\n";
+		html += "			<li><a href=\"#\" title=\"#\">mail008.com</a></li>\n";
+		html += "			</ul>\n";
+		html += "			</div>\n";
+		html += "		</div>\n";
+		html += "	</div>\n";
+		html += "	</div>\n";
+		html += "	<div class=\"ymtit\"><a href=\"#\" class=\"link\">mail.com等3个域名</a></div>\n";
+		html += "	</div>\n";
+		html += "	</td>\n";
+		html += "	<td></td>\n";
+		html += "	<td>第"+idx+"页数据企业已在阿里云万网备案【石家庄多卡士机械设备有限公司】【冀ICP备14008672号-2】石家庄多卡士机械设备有限公司</td>\n";
+		html += "	<td></td>\n";
+		html += "	<td class=\"text-c\">易名中国</td>\n";
+		html += "	<td class=\"text-c c-0074b1\">￥100,000,000</td>\n";
+		html += "	<td class=\"text-c c-ff3232 docountdown\" data-time=\"1459253910\">4小时24分50秒</td>\n";
+		html += "	<td class=\"text-c\">\n";
+		html += "	<a class=\"x-abtn1\" href=\"#\">立即购买</a>\n";
+		html += "	</td>\n";
+		html += "	<td></td>\n";
+		html += "	</tr>\n";
+		
+		html += html;
+	//加载数据
+	$('.outframe table tbody').html(html);
+	//重新渲染分页
+	$('#xmpaging').html(xmnextPage(idx, 2401, 20, 3));
+}
+
+$('#xmpaging').html(xmnextPage(8, 2401, 20, 3));
+</script>
+
+
+
+<style>
+.shuoming{ width:1100px; padding:50px; margin:50px auto; background-color:#fff;}
+.shuoming h3{ font-size:20px; margin-bottom:1em;}
+.shuoming h3 span{ font-size:14px; color:#999; padding:0px 5px;}
+.shuoming h6{ font-size:14px; margin-bottom:1em;}
+.shuoming p{ font-size:14px; line-height:1.5em; margin-bottom:1em; color:#666; text-indent:2em;}
+</style>
+<div class="shuoming">
+<h3>说明：测试时钟以及倒计时功能<span>(支持异步调取重新加载运行倒计时)</span></h3>
+<h6>测试说明：</h6>
+<p>若已显示结束，修改相应的data-time参数大于nowtime即可</p>
+<p>因为是静态页面，所以数据都写死的，真实完整的测试需要放到服务器调取数据测试</p>
+<h6>有以下优点：</h6>
+<p>1.传一个截至时间即可（支持时间戳和Y:m:d H:i:s日期格式），js会自动去判断当前时间做比对，返回倒计时。</p>
+<p>2.支持多时间的倒计时</p>
+<p>3.支持异步调取运行</p>
+</div>
+</body>
+</html>
