@@ -1,3 +1,5 @@
+html{height:100%}
+body{height:100%}
 body{ background-color:#f3f3f3;}
 
 /*新米 表格*/
@@ -15,6 +17,7 @@ body{ background-color:#f3f3f3;}
 .outframe .table th, .outframe .table td{ padding:8px 0px; border-bottom:1px solid #eee; word-break:break-all;}
 .outframe .table-hover tbody tr:hover td,.outframe .table-hover tbody tr:hover th{background-color: #f8f8f8;}
 .outframe .table thead th span{display: inline-block; padding-right:17px; background:url("../images/t10.png") no-repeat; cursor:pointer; background-position: right -48px;}
+.outframe .table thead th span.ym{ padding-left:25px;}
 .outframe .table thead th span.f-img-down{background-position: right -106px;}
 .outframe .table thead th span.f-img-up {background-position: right 10px;}
 .outframe .table a.link{color: #0074b1; text-decoration:none;}
@@ -22,13 +25,29 @@ body{ background-color:#f3f3f3;}
 .outframe .table a.x-abtn1{ color:#fff;}
 .outframe .table a.x-abtn1:hover{color: #fff; text-decoration:none;}
 /*拓展相关*/
-.outframe .table .yms{ float:left; position:relative; margin-right:8px;}
+.outframe .table .duoym{ position:relative;}
+.outframe .table .yms{ float:left; position:absolute; left:0px; top:1px; width:20px;}
 .outframe .table .yms a.zip{ display:inline-block; width:20px; height:20px; background:url(../images/icon_zip.png) no-repeat;}
-.outframe .table .yms .zipyms1{ position:absolute; left:0px; top:20px; padding-top:5px;}
+.outframe .table .yms .zipyms1{ display:none; position:absolute; left:0px; top:20px; padding-top:5px;}
 .outframe .table .yms .zipyms1 i{ position:absolute; top:1px; left:5px; display:block; width:10px; height:7px; background:url(../images/icon_j1.png) no-repeat; background-color:#333; overflow:hidden;}
-.outframe .table .yms .zipyms2{ width:150px; height:180px; border:3px solid #ff6600; background-color:#fff; /*overflow:auto;*/}
+.outframe .table .yms .zipyms2{ width:150px; height:180px; border:3px solid #ff6600; background-color:#fff; overflow:hidden; /*overflow:auto;*/}
 .outframe .table .yms ul{}
 .outframe .table .yms ul li{}
 .outframe .table .yms ul li a{ display:block; width:120px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; padding:0px 15px; height:36px; line-height:36px; color:#ff6600; font-size:14px; font-weight:bold;}
 .outframe .table .yms ul li a:hover{ background-color:#f3f3f3;}
-.outframe .table .ymtit{ float:left;}
+.outframe .table .ymtit{ padding-left:25px;}
+
+/*新米-分页*/
+.xmpagebox{ padding:40px 30px; font-size:14px; color:#333;}
+
+.xm-padding .u-fl{ float:left;}
+.xm-padding .u-fr{ float:right; padding-left:10px; color:#666;}
+.xm-padding .u_fw{ font-weight:normal;}
+.xm-padding{/*width:702px;*/padding-top:10px;line-height:30px;}
+.xm-padding1,.xm-padding2{/*width:678px;*/margin:0px auto;padding:15px 0;}.xm-padding1{width:678px;}.xm-padding2{width:704px;}
+.xm-padding a{display:inline-block;vertical-align:top; background-color:#f0f0f0;min-width:10px;padding:0 10px;height:30px;text-align:center;border:1px solid #d5d5d5;margin-left:5px;}
+.xm-padding a:hover{color:#ff6600;background-color:#fff;border:1px solid #ff6600;}
+.xm-padding a.t{background-color:#ff6600;border:1px solid #ff6600;color:#fff;}
+.xm-padding a.pg_enabled,.xm-padding a.pa_disabled{background-image:none;background-repeat:no-repeat;}
+.xm-padding a.pg_enabled{background-position:-49px 0px;}.xm-padding a.pg_enabled:hover{background-position:-49px -74px;}
+.xm-padding a.pa_disabled{background-position:-46px -148px;}.xm-padding a.pa_disabled:hover{background-position:-43px -222px;}

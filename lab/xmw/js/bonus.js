@@ -39,7 +39,7 @@ $.fn.bonus=function(opts){
 		Woffset = obj.offsetWidth;
 		obj.style.left = setter.xPos + document.body.scrollLeft +'px';
 		obj.style.top = setter.yPos + document.body.scrollTop +'px';
-		console.log(setter.yPos);
+		//console.log(setter.yPos);
 		if (setter.yon)
 			{setter.yPos =setter.yPos + setter.step;}
 		else
@@ -78,15 +78,10 @@ $.fn.bonus=function(opts){
 		obj=$(this);
 		setTimeout(function(){
 			obj.remove();
-			aa();
-			
 		},500);
 		//
 
 	});
 
 	//
-}
-function aa(){
-	alert(32);	
 }
